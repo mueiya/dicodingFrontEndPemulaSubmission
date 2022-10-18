@@ -1,0 +1,184 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(247, 217, 166);
+    background: -moz-radial-gradient(circle, rgba(247, 217, 166, 1) 0%, rgba(233, 218, 190, 1) 27%, rgba(216, 200, 169, 1) 92%, rgba(194, 175, 140, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(247, 217, 166, 1) 0%, rgba(233, 218, 190, 1) 27%, rgba(216, 200, 169, 1) 92%, rgba(194, 175, 140, 1) 100%);
+    background: radial-gradient(circle, rgba(247, 217, 166, 1) 0%, rgba(233, 218, 190, 1) 27%, rgba(216, 200, 169, 1) 92%, rgba(194, 175, 140, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f7d9a6", endColorstr="#c2af8c", GradientType=1);
+}
+
+.head {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    margin: 5px;
+    justify-content: space-between;
+}
+
+.headButton {
+    display: flex;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0 20px;
+}
+
+.addBookButton,
+.searchBookButton {
+    display: flex;
+    background-color: #9FC088;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 6.25rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 10px;
+    -webkit-box-shadow: 0px 4px 24px -6px rgba(217, 207, 196, 0.72);
+    -moz-box-shadow: 0px 4px 24px -6px rgba(217, 207, 196, 0.72);
+    box-shadow: 0px 4px 24px -6px rgba(217, 207, 196, 0.72);
+
+}
+
+.addBookButton:hover,
+.searchBookButton:hover {
+    background-color: #9fc088b7;
+    animation: textfadeIn 1s;
+}
+
+.addBookButton .buttonText,
+.searchBookButton .buttonText {
+    display: none;
+    font-family: "Yeseva One", cursive;
+    padding: 5px;
+
+}
+
+@keyframes textfadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.addBookButton .material-symbols-outlined,
+.searchBookButton .material-symbols-outlined {
+    padding: 5px;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 600,
+        'GRAD' 200,
+        'opsz' 48;
+}
+
+.head img {
+    background-color: rgba(255, 250, 240, 0.37);
+    width: 300px;
+    padding: 15px;
+}
+
+.head img:hover {
+    animation: imageRotate 1s;
+}
+
+@keyframes imageRotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+main {
+    margin: 0 auto;
+}
+
+.illustContainer,
+.bookContainer {
+    flex-grow: 1;
+}
+
+.container {
+    display: flex;
+    padding: 5%;
+    justify-content: space-between;
+    /* remove bg color after finish */
+    background-color: red;
+    margin: 1%;
+}
+
+.addBookOverlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.555);
+    display: none;
+    width: 100%;
+    height: 100%;
+    inset: 0 0 0 0;
+    z-index: 10;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.addBookOverlay p {
+    flex-basis: 5%;
+    font-family: "Yeseva One", cursive;
+    font-size: 23px;
+    color: #00000098;
+}
+
+.spacer {
+    flex-basis: 5%;
+}
+
+.inputBook {
+    width: -moz-fit-content;
+    width: fit-content;
+    align-items: center;
+    padding: 2%;
+    background-color: #e9dabe;
+    border-radius: 10px;
+    -webkit-box-shadow: -7px 4px 18px -1px rgba(61, 51, 51, 0.75);
+    -moz-box-shadow: -7px 4px 18px -1px rgba(61, 51, 51, 0.75);
+    box-shadow: -7px 4px 18px -1px rgba(61, 51, 51, 0.75);
+}
+
+#input {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Yeseva One", cursive;
+    padding: 15px;
+}
+
+.inputBook label {
+    padding: 0 10px;
+}
+
+.checkboxInput {
+    display: flex;
+}
+
+.finishedTargetInput {
+    display: none;
+}
