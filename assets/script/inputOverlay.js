@@ -1,8 +1,21 @@
-const container = document.getElementsByClassName('inputBook')
+const container = document.getElementsByClassName('inputBook');
+var overlay = document.getElementById('addBookOverlay');
+var isHover = false;
 
 function overlayOn() {
-    document.getElementsById('addBookOverlay').style.display = 'flex';
+    overlay.style.display = 'flex';
 }
 function overlayOff () {
-    document.getElementsById('addBookOverlay').style.display = 'none';
+    if (!isHover) {
+        overlay.style.display = 'none';
+    }
+    else {
+        return;
+    }
+}
+function overlayHover() {
+    isHover = true;
+}
+function overlayLeave() {
+    isHover = false;
 }

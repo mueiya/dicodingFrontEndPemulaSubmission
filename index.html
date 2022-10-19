@@ -10,9 +10,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Yeseva+One&display=swap" rel="stylesheet">     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
@@ -20,12 +20,6 @@
     <header class="head">
         <img src="assets/img/logo.png" alt="">
         <div class="headButton">
-            <div class="addBookButton" onmouseover="popUp('addButtonText')" onmouseleave="popUpHide('addButtonText')" onclick="overlayOn('addBookOverlay')">
-                <span class="buttonText" id="addButtonText">Add Book</span>
-                <span class="material-symbols-outlined">
-                    add
-                </span>
-            </div>
             <div class="searchBookButton" onmouseover="popUp('searchBook')" onmouseleave="popUpHide('searchBook')">
                 <form class="buttonText" id="searchBook">
                     <label for="searchBox">Search Book</label>
@@ -33,6 +27,12 @@
                 </form>
                 <span class="material-symbols-outlined">
                     search
+                </span>
+            </div>
+            <div class="addBookButton" onmouseover="popUp('addButtonText')" onmouseleave="popUpHide('addButtonText')" onclick="overlayOn('addBookOverlay')">
+                <span class="buttonText" id="addButtonText">Add Book</span>
+                <span class="material-symbols-outlined">
+                    add
                 </span>
             </div>
         </div>
@@ -47,11 +47,11 @@
         <div class="container">
             <div class="bookContainer" id="read"></div>
             <div class="bookContainer" id="reading"></div>
-            <div class="bookContainer" id="readnot"></div>
+            <div class="bookContainer" id="unread"></div>
         </div>
         <div class="addBookOverlay" id="addBookOverlay" onclick="overlayOff()">
             <div class="spacer"></div>
-            <div class="inputBook">
+            <div class="inputBook" onmouseover="overlayHover()" onmouseleave="overlayLeave()">
                 <h2>Add Book to Shelf</h2>
                 <form id="bookIdentity">
                     <div class="identityInput">
@@ -65,24 +65,24 @@
                         </div>
                         <div id="input">
                             <label for="inputYear">Publication Year</label>
-                            <input id="inputYear" type="text" required>
+                            <input id="inputYear" type="number" required>
                         </div>
                     </div>
                     <div class="checkboxInput">
                         <div id="input">
+                            <input class="readCheck" id="finishedReadingCheck" type="checkbox" required>
                             <label for="finishedReadingCheck">Finished Reading</label>
-                            <input id="finishedReadingCheck" type="checkbox">
                         </div>
                         <div id="input">
+                            <input class="readCheck" id="readingCheck" type="checkbox" required>
                             <label for="readingCheck">Reading</label>
-                            <input id="readingCheck" type="checkbox">
                         </div>
                         <div id="input">
+                            <input class="readCheck" id="unreadCheck" type="checkbox" required>
                             <label for="unreadCheck">Unread</label>
-                            <input id="unreadCheck" type="checkbox">
                         </div>
                     </div>
-                    <div class="finishedTargetInput">
+                    <div class="finishedTargetInput" id="finishedTargetInput">
                         <div id="input">
                             <label for="inputFinishTarget">Finished Target</label>
                             <input id="inputFinishTarget" type="date">
@@ -96,6 +96,7 @@
     </main>
     <script src="assets/script/addHeadButton.js"></script>
     <script src="assets/script/inputOverlay.js"></script>
+    <script src="assets/script/inputCheckbox.js"></script>
 </body>
 
 </html>
