@@ -1,5 +1,6 @@
 const container = document.getElementsByClassName('inputBook');
 var overlay = document.getElementById('addBookOverlay');
+var form = document.getElementById('bookIdentity');
 var isHover = false;
 
 function overlayOn() {
@@ -19,3 +20,7 @@ function overlayHover() {
 function overlayLeave() {
     isHover = false;
 }
+
+form.addEventListener('submit', function () {
+    overlay.style.display = 'none';
+});
