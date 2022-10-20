@@ -19,7 +19,7 @@ function generateBookInfo(id, title, author, year, readState, targetTime) {
 function findBook(bookId) {
     for (bookItem of bookInfoArray) {
         if (bookItem.id === bookId) {
-            return index;
+            return bookItem;
         }
     }
 }
@@ -32,12 +32,15 @@ function findBookIndex(bookId) {
     }
     return -1;
 }
-
-function createBook(id, title, author, year, readState, targetTime) {
+//bug Is Here. It can't defined objecy
+function createBook(bookElement) {
+    const { id, title, author, year, readState, targetTime } = bookElement
+    console.log(id, title, author, year, readState, targetTime);
 
     const bookTitle = document.createElement("p");
     bookTitle.classList.add("titleClass");
     bookTitle.innerText = title;
+    console.log(title)
 
     const bookAuthor = document.createElement("p");
     bookAuthor.classList.add("authorClass");
@@ -59,6 +62,8 @@ function createBook(id, title, author, year, readState, targetTime) {
     } else {
         containerBook.append(bookTitle, bookAuthor, bookYear);
     }
+    //Vuttobn return Undifinne
+    console.log(readState);
 
     const containerButton = document.createElement("div");
     containerButton.classList.add("containerButtonClass");
@@ -72,59 +77,59 @@ function createBook(id, title, author, year, readState, targetTime) {
     return container;
 }
 
-function addButton(id, readState) {
-    var delButton = document.createElement('button').classList.add('actionButton');
-    var moveDoneReadButton = document.createElement('button').classList.add('actionButton');
-    var moveReadButton = document.createElement('button').classList.add('actionButton');
-    var moveNotReadButton = document.createElement('button').classList.add('actionButton');
-    var editButton = document.createElement('button').classList.add('actionButton');
-    delButton.addEventListener('click', function () {
-        removeBook(id);
-    })
-    moveDoneReadButton.addEventListener('click', function () {
-        moveToDone(id);
-    })
-    moveNotReadButton.addEventListener('click', function () {
-        moveToNotRead(id);
-    })
-    moveReadButton.addEventListener('click', function () {
-        moveToOnRead(id);
-    })
-    if (readState == 'onRead') {
-        return delButton.classList.add('del'),
-            moveNotReadButton.classList.add('moveNot'),
-            moveDoneReadButton.classList.add('moveDone'),
-            editButton.classList.add('edit');
-    } else if (readState == 'doneRead') {
-        return delButton.classList.add('del'),
-            moveNotReadButton.classList.add('moveNot'),
-            moveReadButton.classList.add('MoveOn'),
-            editButton.classList.add('edit');
-    } else if (readState == 'notRead') {
-        return delButton.classList.add('del'),
-            moveDoneReadButton.classList.add('moveDone'),
-            moveReadButton.classList.add('MoveOn'),
-            editButton.classList.add('edit');
-    }
-}
+// function addButton(id, readState) {
+//     const delButton = document.createElement('button');
+//     const moveDoneReadButton = document.createElement('button');
+//     const moveReadButton = document.createElement('button');
+//     const moveNotReadButton = document.createElement('button');
+//     const editButton = document.createElement('button');
+//     delButton.addEventListener('click', function () {
+//         removeBook(id);
+//     })
+//     moveDoneReadButton.addEventListener('click', function () {
+//         moveToDone(id);
+//     })
+//     moveNotReadButton.addEventListener('click', function () {
+//         moveToNotRead(id);
+//     })
+//     moveReadButton.addEventListener('click', function () {
+//         moveToOnRead(id);
+//     })
+//     if (readState == 'onRead') {
+//         delButton.classList.add('del');
+//         moveNotReadButton.classList.add('moveNot');
+//         moveDoneReadButton.classList.add('moveDone');
+//         editButton.classList.add('edit');
+//     } else if (readState == 'doneRead') {
+//         delButton.classList.add('del');
+//         moveNotReadButton.classList.add('moveNot');
+//         moveReadButton.classList.add('MoveOn');
+//         editButton.classList.add('edit');
+//     } else if (readState == 'notRead') {
+//         delButton.classList.add('del');
+//         moveDoneReadButton.classList.add('moveDone');
+//         moveReadButton.classList.add('MoveOn');
+//         editButton.classList.add('edit');
+//     }
+//     console.log('action Button on')
+// }
 
 function addBook() {
     const titleBook = document.getElementById('inputTitle').value;
     const authorBook = document.getElementById('inputAuthor').value;
     const yearBook = document.getElementById('inputYear').value;
     const stateBook = bookState();
-    var timeTarget;
-    if (stateBook === 'onRead') {
-        timeTarget = document.getElementById('inputFinishTarget').value;
-    } else {
-        return null;
-    }
+    var timeTarget = document.getElementById('inputFinishTarget').value;
 
     const generatedID = generateId();
     const bookObject = generateBookInfo(generatedID, titleBook, authorBook, yearBook, stateBook, timeTarget);
     bookInfoArray.push(bookObject);
 
+    console.log('addBook function on');
+    console.log(bookObject);
+
     document.dispatchEvent(new Event(RENDER_EVENT));
+
 }
 
 function bookState() {
@@ -146,7 +151,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitForm = document.getElementById('bookIdentity');
     submitForm.addEventListener('submit', function (event) {
         event.preventDefault();
+        console.log('adding book');
         addBook();
+
     });
 });
 
@@ -154,15 +161,17 @@ document.addEventListener(RENDER_EVENT, function () {
     const bookDoneRead = document.getElementById('read');
     const bookRead = document.getElementById('reading');
     const bookUnRead = document.getElementById('unread');
+    const readState = bookState();
 
     // clearing list item
     bookDoneRead.innerHTML = '';
     bookRead.innerHTML = '';
     bookUnRead.innerHTML = '';
-    console.log('naise')
 
     for (bookItem of bookInfoArray) {
-        const bookElement = createBook(todoItem);
+        const bookElement = createBook(bookItem);
+        console.log('this is bookItem');
+        console.log(bookItem);
         if (readState == 'onRead') {
             bookRead.append(bookElement);
         } else if (readState == 'doneRead') {

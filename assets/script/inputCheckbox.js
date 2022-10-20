@@ -28,6 +28,7 @@ read.addEventListener('change', function () {
         unread.checked = false;
         reading.required = false;
         unread.required = false;
+        targetDate.required = false;
         target.style.display = 'none';
         submitShelf.innerHTML = '"Read"';
     } else if(!read.checked){
@@ -41,6 +42,7 @@ unread.addEventListener('change', function () {
         read.checked = false;
         reading.required = false;
         read.required = false;
+        targetDate.required = false;
         target.style.display = 'none';
         submitShelf.innerHTML = '"Unread"';
     } else if(!unread.checked){
