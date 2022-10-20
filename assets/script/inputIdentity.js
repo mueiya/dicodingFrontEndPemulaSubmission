@@ -20,7 +20,7 @@ function createBook(bookElement) {
     const { id, title, author, year, readState, targetTime } = bookElement
     const thisId = id.toString();
 
-    const bookTitle = document.createElement("div");
+    const bookTitle = document.createElement("p");
     bookTitle.classList.add("titleClass");
     bookTitle.innerHTML = "<span>Title</span>";
     const titleBook = document.createElement("p");
@@ -174,9 +174,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener(RENDER_EVENT, function () {
-    const bookDoneRead = document.getElementById('read');
-    const bookRead = document.getElementById('reading');
-    const bookUnRead = document.getElementById('unread');
+    const bookDoneRead = document.getElementById('readContent');
+    const bookRead = document.getElementById('readingContent');
+    const bookUnRead = document.getElementById('unreadContent');
 
     // clearing list item
     bookDoneRead.innerHTML = '';

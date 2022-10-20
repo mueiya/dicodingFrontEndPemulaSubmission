@@ -47,9 +47,27 @@
             <div class="illustContainer" id="readNotIllust"></div>
         </div>
         <div class="container" id="forBook">
-            <div class="bookContainer" id="read"></div>
-            <div class="bookContainer" id="reading"></div>
-            <div class="bookContainer" id="unread"></div>
+            <div class="bookContainer" id="read" onclick="showShelfMed ('read')" onmouseover="peek('read')" onmouseleave="peekNot('read')">
+                <span id="expandLogo" class="material-symbols-outlined">
+                    expand_less
+                </span>
+                <span id="containerTitle">Done Reading</span>
+                <div class="bookContent" id="readContent" onmouseover="ishoverCheck()" onmouseleave="nothoverCheck()"></div>
+            </div>
+            <div class="bookContainer" id="reading" onclick="showShelfMed ('reading')" onmouseover="peek('reading')" onmouseleave="peekNot('reading')">
+                <span id="expandLogo" class="material-symbols-outlined">
+                    expand_less
+                </span>
+                <span id="containerTitle">Reading</span>
+                <div class="bookContent" id="readingContent" onmouseover="ishoverCheck()" onmouseleave="nothoverCheck()"></div>
+            </div>
+            <div class="bookContainer" id="unread"onclick="showShelfMed ('unread')" onmouseover="peek('unread')" onmouseleave="peekNot('unread')">
+                <span id="expandLogo" class="material-symbols-outlined">
+                    expand_less
+                </span>
+                <span id="containerTitle">Not Reading Yet</span>
+                <div class="bookContent" id="unreadContent" onmouseover="ishoverCheck()" onmouseleave="nothoverCheck()"></div>
+            </div>
         </div>
         <div class="addBookOverlay" id="addBookOverlay" onclick="overlayOff()">
             <div class="spacer"></div>
@@ -102,5 +120,7 @@
     <script src="assets/script/inputCheckbox.js"></script>
     <script src="assets/script/inputIdentity.js"></script>
     <script src="assets/script/localStorage.js"></script>
+    <script src="assets/script/showShelf.js"></script>
 </body>
+
 </html>

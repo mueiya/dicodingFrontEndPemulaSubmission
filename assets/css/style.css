@@ -119,45 +119,16 @@ main {
 .bookContainer {
     flex-basis: 33.3%;
 }
-.bookContainer {
-    background: rgb(154,201,120);
-    background: -moz-radial-gradient(circle, rgba(154,201,120,1) 0%, rgba(154,201,120,1) 100%);
-    background: -webkit-radial-gradient(circle, rgba(154,201,120,1) 0%, rgba(154,201,120,1) 100%);
-    background: radial-gradient(circle, rgba(154,201,120,1) 0%, rgba(154,201,120,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9ac978",endColorstr="#9ac978",GradientType=1);
-    margin: 0.5rem 0.5rem 0 0.5rem;
-    border-radius: 1rem 1rem 0 0;
-    padding: 1rem;
-    height: 100%;
-    width: 25%;
-    position: absolute;
-    bottom: -75%;
-    cursor: pointer;
-    z-index: 4;
-}
-#read {
-    left: 5%;
-}
-#read:hover {
-    bottom: -74%;
-}
-#reading:hover {
-    bottom: -74%;
-}
-#unread {
-    right: 5%;
-}
-#unread:hover {
-    bottom: -74%;
-}
+
 .container {
     display: flex;
     padding: 0.1rem;
-        justify-content: space-around;
+    justify-content: space-around;
     /* remove bg color after finish */
     background-color: red;
     margin: 1%;
 }
+
 #forBook {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.555);
@@ -170,10 +141,119 @@ main {
     align-items: center;
     margin: 0;
 }
+
+.bookContainer {
+    background: rgb(154, 201, 120);
+    background: -moz-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9ac978", endColorstr="#9ac978", GradientType=1);
+    -webkit-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    margin: 0.5rem 0.5rem 0 0.5rem;
+    border-radius: 1rem 1rem 0 0;
+    padding: 1rem;
+    height: 100%;
+    width: 25%;
+    position: absolute;
+    bottom: -72%;
+    cursor: pointer;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#containerTitle {
+    background-color: #b7ff009c;
+}
+
+#read {
+    left: 5%;
+}
+
+#read:hover {
+    background: rgb(114, 150, 87);
+    background: -moz-radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    background: radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#729657", endColorstr="#779d5c", GradientType=1);
+}
+
+#reading:hover {
+    background: rgb(114, 150, 87);
+    background: -moz-radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    background: radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#729657", endColorstr="#779d5c", GradientType=1);
+}
+
+#unread {
+    right: 5%;
+}
+
+#unread:hover {
+    background: rgb(114, 150, 87);
+    background: -moz-radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    background: radial-gradient(circle, rgba(114, 150, 87, 1) 0%, rgba(119, 157, 92, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#729657", endColorstr="#779d5c", GradientType=1);
+}
+
+.bookContent {
+    width: 100%;
+}
+
 .containerClass {
     display: flex;
     flex-direction: column;
+    margin: 10px;
+    background-color: #9fc088a9;
+    border-radius: 0.5rem;
+    padding: 5px;
+    -webkit-box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
+    -moz-box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
+    box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
+}
 
+.containerBookClass p {
+    display: flex;
+    cursor: auto;
+}
+
+.containerBookClass p span {
+    background-color: #576f46f1;
+    color: #d5e1cd;
+    min-width: 30%;
+    width: 30%;
+    margin: 1px 5px;
+}
+
+.targerWarn {
+    justify-content: end;
+}
+
+.targerWarn .material-symbols-outlined {
+    font-size: 24px;
+}
+
+.targerWarn span {
+    color: red !important;
+    background-color: transparent !important;
+    font-size: 10px;
+    text-align: left;
+    flex-basis: 50%;
+}
+
+.containerButtonClass {
+    display: flex;
+    justify-content: end;
+}
+
+.containerButtonClass span:hover {
+    background-color: #373935c5;
+    color: #dee9d6;
+    border-radius: 6.25rem;
 }
 
 .addBookOverlay {
@@ -229,7 +309,8 @@ main {
     margin: 10px 0;
 }
 
-#input input[type=text], #input input[type=number] {
+#input input[type=text],
+#input input[type=number] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
