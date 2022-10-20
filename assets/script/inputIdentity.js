@@ -15,111 +15,121 @@ function generateBookInfo(id, title, author, year, readState, targetTime) {
         targetTime
     };
 }
-
-function findBook(bookId) {
-    for (bookItem of bookInfoArray) {
-        if (bookItem.id === bookId) {
-            return bookItem;
-        }
-    }
-}
-
-function findBookIndex(bookId) {
-    for (index in bookInfoArray) {
-        if (bookInfoArray[index].id === bookId) {
-            return index
-        }
-    }
-    return -1;
-}
 //bug Is Here. It can't defined objecy
 function createBook(bookElement) {
     const { id, title, author, year, readState, targetTime } = bookElement
-    console.log(id, title, author, year, readState, targetTime);
+    const thisId = id.toString();
 
-    const bookTitle = document.createElement("p");
+    const bookTitle = document.createElement("div");
     bookTitle.classList.add("titleClass");
-    bookTitle.innerText = title;
-    console.log(title)
+    bookTitle.innerHTML = "<span>Title</span>";
+    const titleBook = document.createElement("p");
+    titleBook.innerText = title;
+    bookTitle.append(titleBook);
+    console.log(title);
 
     const bookAuthor = document.createElement("p");
     bookAuthor.classList.add("authorClass");
-    bookAuthor.innerText = author;
+    bookAuthor.innerHTML = "<span>Author</span>";
+    const authorBook = document.createElement("p");
+    authorBook.innerText = author;
+    bookAuthor.append(authorBook);
 
     const bookYear = document.createElement("p");
     bookYear.classList.add("yearClass");
-    bookYear.innerText = year;
-
-
+    bookYear.innerHTML = "<span>Year</span>";
+    const yearBook = document.createElement("p");
+    yearBook.innerText = year;
+    bookYear.append(yearBook);
 
     const containerBook = document.createElement("div");
     containerBook.classList.add("containerBookClass");
-    if (readState == 'onRead' && readState != null) {
+    if (readState == 'onRead' && targetTime != '') {
         const target = document.createElement("p");
         target.classList.add("targetClass");
-        target.innerText = targetTime;
+        target.innerHTML = "<span>Due Target</span>";
+        const targetBook = document.createElement("p");
+        targetBook.innerText = targetTime;
+        target.append(targetBook);
         containerBook.append(bookTitle, bookAuthor, bookYear, target);
+    } else if(readState == 'onRead' && targetTime == '') {
+        const targetWarn = document.createElement("p");
+        targetWarn.classList.add("targerWarn");
+        targetWarn.innerHTML = '<span class="material-symbols-outlined">exclamation</span><span> Edit to Add Target Due</span>';
+        containerBook.append(bookTitle, bookAuthor, bookYear, targetWarn);
     } else {
         containerBook.append(bookTitle, bookAuthor, bookYear);
     }
-    //Vuttobn return Undifinne
+
     console.log(readState);
+
+    const delButton = document.createElement('span');
+    delButton.classList.add("material-symbols-outlined");
+    delButton.classList.add('del');
+    delButton.innerText = 'delete';
+    delButton.addEventListener('click', function () {
+        console.log("book " + id + " removed")
+        removeBook(id);
+    })
+
+    const moveDoneReadButton = document.createElement('span');
+    moveDoneReadButton.classList.add("material-symbols-outlined");
+    moveDoneReadButton.classList.add('moveDone');
+    moveDoneReadButton.innerText = 'done_all';
+    moveDoneReadButton.addEventListener('click', function () {
+        moveToDone(id);
+    })
+
+    const moveReadButton = document.createElement('span');
+    moveReadButton.classList.add("material-symbols-outlined");
+    moveReadButton.classList.add('MoveOn');
+    moveReadButton.innerText = 'book';
+    moveReadButton.addEventListener('click', function () {
+        moveToOnRead(id);
+    })
+
+    const moveNotReadButton = document.createElement('span');
+    moveNotReadButton.classList.add("material-symbols-outlined");
+    moveNotReadButton.classList.add('moveNot');
+    moveNotReadButton.innerText = 'remove_done';
+    moveNotReadButton.addEventListener('click', function () {
+        console.log('its should be moving right now');
+        moveToNotRead(id);
+
+    })
+
+    const editButton = document.createElement('span');
+    editButton.classList.add("material-symbols-outlined");
+    editButton.classList.add('edit');
+    editButton.innerText = 'edit';
 
     const containerButton = document.createElement("div");
     containerButton.classList.add("containerButtonClass");
-    containerButton.append(addButton(id, readState));
+
+    if (readState == 'onRead') {
+        containerButton.append(moveDoneReadButton, moveNotReadButton, editButton, delButton);
+    } else if (readState == 'doneRead') {
+        containerButton.append(moveReadButton, moveNotReadButton, editButton, delButton);
+    } else if (readState == 'notRead') {
+        containerButton.append(moveDoneReadButton, moveReadButton, editButton, delButton);
+    } else {
+        console.error("Can't define state!");
+    }
 
     const container = document.createElement("div");
     container.classList.add("containerClass");
     container.append(containerBook, containerButton);
-    container.setAttribute('id', 'book-${id}');
+    container.setAttribute('id', thisId);
 
     return container;
 }
-
-// function addButton(id, readState) {
-//     const delButton = document.createElement('button');
-//     const moveDoneReadButton = document.createElement('button');
-//     const moveReadButton = document.createElement('button');
-//     const moveNotReadButton = document.createElement('button');
-//     const editButton = document.createElement('button');
-//     delButton.addEventListener('click', function () {
-//         removeBook(id);
-//     })
-//     moveDoneReadButton.addEventListener('click', function () {
-//         moveToDone(id);
-//     })
-//     moveNotReadButton.addEventListener('click', function () {
-//         moveToNotRead(id);
-//     })
-//     moveReadButton.addEventListener('click', function () {
-//         moveToOnRead(id);
-//     })
-//     if (readState == 'onRead') {
-//         delButton.classList.add('del');
-//         moveNotReadButton.classList.add('moveNot');
-//         moveDoneReadButton.classList.add('moveDone');
-//         editButton.classList.add('edit');
-//     } else if (readState == 'doneRead') {
-//         delButton.classList.add('del');
-//         moveNotReadButton.classList.add('moveNot');
-//         moveReadButton.classList.add('MoveOn');
-//         editButton.classList.add('edit');
-//     } else if (readState == 'notRead') {
-//         delButton.classList.add('del');
-//         moveDoneReadButton.classList.add('moveDone');
-//         moveReadButton.classList.add('MoveOn');
-//         editButton.classList.add('edit');
-//     }
-//     console.log('action Button on')
-// }
 
 function addBook() {
     const titleBook = document.getElementById('inputTitle').value;
     const authorBook = document.getElementById('inputAuthor').value;
     const yearBook = document.getElementById('inputYear').value;
     const stateBook = bookState();
-    var timeTarget = document.getElementById('inputFinishTarget').value;
+    timeTarget = document.getElementById('inputFinishTarget').value;
 
     const generatedID = generateId();
     const bookObject = generateBookInfo(generatedID, titleBook, authorBook, yearBook, stateBook, timeTarget);
@@ -129,6 +139,8 @@ function addBook() {
     console.log(bookObject);
 
     document.dispatchEvent(new Event(RENDER_EVENT));
+
+    saveData();
 
 }
 
@@ -153,15 +165,18 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         console.log('adding book');
         addBook();
-
+        submitForm.reset()
     });
+
+    if (isStorageExist()) {
+        loadDataFromStorage();
+    }
 });
 
 document.addEventListener(RENDER_EVENT, function () {
     const bookDoneRead = document.getElementById('read');
     const bookRead = document.getElementById('reading');
     const bookUnRead = document.getElementById('unread');
-    const readState = bookState();
 
     // clearing list item
     bookDoneRead.innerHTML = '';
@@ -172,13 +187,15 @@ document.addEventListener(RENDER_EVENT, function () {
         const bookElement = createBook(bookItem);
         console.log('this is bookItem');
         console.log(bookItem);
-        if (readState == 'onRead') {
+        if (bookItem.readState == 'onRead') {
             bookRead.append(bookElement);
-        } else if (readState == 'doneRead') {
+        } else if (bookItem.readState == 'doneRead') {
             bookDoneRead.append(bookElement);
-        } else if (readState == 'notRead') {
+        } else if (bookItem.readState == 'notRead') {
             bookUnRead.append(bookElement);
         }
 
     }
+
+    saveData();
 });

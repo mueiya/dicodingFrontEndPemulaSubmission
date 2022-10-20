@@ -12,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Yeseva+One&display=swap" rel="stylesheet">     <link rel="stylesheet"
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
@@ -29,7 +30,8 @@
                     search
                 </span>
             </div>
-            <div class="addBookButton" onmouseover="popUp('addButtonText')" onmouseleave="popUpHide('addButtonText')" onclick="overlayOn('addBookOverlay')">
+            <div class="addBookButton" onmouseover="popUp('addButtonText')" onmouseleave="popUpHide('addButtonText')"
+                onclick="overlayOn('addBookOverlay')">
                 <span class="buttonText" id="addButtonText">Add Book</span>
                 <span class="material-symbols-outlined">
                     add
@@ -39,12 +41,12 @@
 
     </header>
     <main>
-        <div class="container">
+        <div class="container" id="forIllust">
             <div class="illustContainer" id="readIllust"></div>
             <div class="illustContainer" id="readingIllust"></div>
             <div class="illustContainer" id="readNotIllust"></div>
         </div>
-        <div class="container">
+        <div class="container" id="forBook">
             <div class="bookContainer" id="read"></div>
             <div class="bookContainer" id="reading"></div>
             <div class="bookContainer" id="unread"></div>
@@ -94,10 +96,11 @@
             <p>Click on Dark Area to Close</p>
         </div>
     </main>
+    <script src="assets/script/actionButton.js"></script>
     <script src="assets/script/addHeadButton.js"></script>
     <script src="assets/script/inputOverlay.js"></script>
     <script src="assets/script/inputCheckbox.js"></script>
     <script src="assets/script/inputIdentity.js"></script>
+    <script src="assets/script/localStorage.js"></script>
 </body>
-
 </html>
