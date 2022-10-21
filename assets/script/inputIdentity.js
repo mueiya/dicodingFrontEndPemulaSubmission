@@ -60,14 +60,11 @@ function createBook(bookElement) {
         containerBook.append(bookTitle, bookAuthor, bookYear);
     }
 
-    console.log(readState);
-
     const delButton = document.createElement('span');
     delButton.classList.add("material-symbols-outlined");
     delButton.classList.add('del');
     delButton.innerText = 'delete';
     delButton.addEventListener('click', function () {
-        console.log("book " + id + " removed")
         removeBook(id);
     })
 
@@ -92,7 +89,6 @@ function createBook(bookElement) {
     moveNotReadButton.classList.add('moveNot');
     moveNotReadButton.innerText = 'remove_done';
     moveNotReadButton.addEventListener('click', function () {
-        console.log('its should be moving right now');
         moveToNotRead(id);
 
     })
@@ -103,7 +99,6 @@ function createBook(bookElement) {
     editButton.innerText = 'edit';
     editButton.addEventListener('click', function () {
         editBook(id);
-        console.log('editBook Instance');
     })
 
     const containerButton = document.createElement("div");
@@ -138,13 +133,9 @@ function addBook() {
     const bookObject = generateBookInfo(generatedID, titleBook, authorBook, yearBook, stateBook, timeTarget);
     bookInfoArray.push(bookObject);
 
-    console.log('addBook function on');
-    console.log(bookObject);
-
     document.dispatchEvent(new Event(RENDER_EVENT));
 
     saveData();
-
 }
 
 function bookState() {
@@ -155,10 +146,10 @@ function bookState() {
         return 'doneRead';
     }
     else if (onRead.checked) {
-        return 'onRead'
+        return 'onRead';
     }
     else if (notRead.checked) {
-        return 'notRead'
+        return 'notRead';
     }
 }
 
@@ -166,15 +157,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitForm = document.getElementById('bookIdentity');
     submitForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        console.log('adding book');
         if (isEditing == true) {
             applyEdit();
             isEditing = false;
             editIndex = null;
-        } else if (isEditing == false){
-           addBook(); 
+        } else if (isEditing == false) {
+            addBook();
         }
-        submitForm.reset()
+        submitForm.reset();
     });
 
     if (isStorageExist()) {
@@ -186,15 +176,13 @@ document.addEventListener(RENDER_EVENT, function () {
     const bookDoneRead = document.getElementById('readContent');
     const bookRead = document.getElementById('readingContent');
     const bookUnRead = document.getElementById('unreadContent');
-    // clearing list item
     bookDoneRead.innerHTML = '';
     bookRead.innerHTML = '';
     bookUnRead.innerHTML = '';
 
     for (bookItem of bookInfoArray) {
         const bookElement = createBook(bookItem);
-        console.log('this is bookItem');
-        console.log(bookItem);
+
         if (bookItem.readState == 'onRead') {
             bookRead.append(bookElement);
         } else if (bookItem.readState == 'doneRead') {

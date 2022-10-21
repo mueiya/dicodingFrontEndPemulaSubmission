@@ -21,14 +21,20 @@
     <header class="head">
         <img src="assets/img/logo.png" alt="">
         <div class="headButton">
-            <div class="searchBookButton" onmouseover="popUp('searchBook')" onmouseleave="popUpHide('searchBook')">
-                <form class="buttonText" id="searchBook">
-                    <label for="searchBox">Search Book</label>
-                    <input id="searchBox" type="text">
-                </form>
-                <span class="material-symbols-outlined">
-                    search
-                </span>
+            <div class="search" onmouseover="popUp('searchBook')" onmouseleave="popUpHide('searchBook')">
+                <div class="searchBookButton" id="searchBookButton">
+                    <form class="buttonText" id="searchBook">
+                        <label for="searchBox">Search Book</label>
+                        <input id="searchBox" type="text" oninput="updateSearch()">
+                    </form>
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+
+                </div>
+                <div class="searchResContainer" id="searchResContainer">
+
+                </div>
             </div>
             <div class="addBookButton" onmouseover="popUp('addButtonText')" onmouseleave="popUpHide('addButtonText')"
                 onclick="overlayOn('addBookOverlay')">
@@ -133,6 +139,7 @@
     <script src="assets/script/inputIdentity.js"></script>
     <script src="assets/script/localStorage.js"></script>
     <script src="assets/script/showShelf.js"></script>
+    <script src="assets/script/searchFun.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ var isHover = false;
 function overlayOn() {
     overlay.style.display = 'flex';
 }
-function overlayOff () {
+function overlayOff() {
     if (!isHover) {
         overlay.style.display = 'none';
     }

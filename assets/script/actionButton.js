@@ -4,7 +4,7 @@ var editIndex;
 function findBookIndex(bookId) {
     for (index in bookInfoArray) {
         if (bookInfoArray[index].id === bookId) {
-            return index
+            return index;
         }
     }
     return null;
@@ -70,7 +70,7 @@ function editBook(bookId) {
 
     stateBook = bookState();
     timeTarget = document.getElementById('inputFinishTarget').value;
-    
+
     isEditing = true;
     editIndex = target;
 
@@ -78,7 +78,7 @@ function editBook(bookId) {
 
     document.dispatchEvent(new Event(RENDER_EVENT));
 }
-function applyEdit () {
+function applyEdit() {
     const titleBook = document.getElementById('inputTitle').value;
     const authorBook = document.getElementById('inputAuthor').value;
     const yearBook = document.getElementById('inputYear').value;
@@ -88,9 +88,6 @@ function applyEdit () {
     const generatedID = generateId();
     const bookObject = generateBookInfo(generatedID, titleBook, authorBook, yearBook, stateBook, timeTarget);
     bookInfoArray.splice(editIndex, 1, bookObject);
-
-    console.log('addBook function on');
-    console.log(bookObject);
 
     document.dispatchEvent(new Event(RENDER_EVENT));
 

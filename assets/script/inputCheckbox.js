@@ -31,7 +31,7 @@ read.addEventListener('change', function () {
         targetDate.required = false;
         target.style.display = 'none';
         submitShelf.innerHTML = '"Read"';
-    } else if(!read.checked){
+    } else if (!read.checked) {
         submitShelf.innerHTML = '';
         return;
     }
@@ -45,7 +45,7 @@ unread.addEventListener('change', function () {
         targetDate.required = false;
         target.style.display = 'none';
         submitShelf.innerHTML = '"Unread"';
-    } else if(!unread.checked){
+    } else if (!unread.checked) {
         submitShelf.innerHTML = '';
         return;
     }

@@ -3,7 +3,6 @@ var onAnimation = false;
 var isExpand = false;
 
 function showShelfMed(shelf) {
-    console.log('showsh active');
     const theShelf = document.getElementById(shelf);
 
 
@@ -19,8 +18,6 @@ function showShelfMed(shelf) {
             changeIcon(theShelf);
             isExpand = false;
         }
-    console.log(isExpand);
-    console.log(ishover);
 }
 function ishoverCheck() {
     ishover = true;
@@ -48,7 +45,7 @@ function changeIcon(shelf) {
     if (thisIcon.innerText == 'expand_less') {
         thisIcon.innerText = 'expand_more';
     } else {
-        thisIcon.innerText = 'expand_less'
+        thisIcon.innerText = 'expand_less';
     }
 
 }

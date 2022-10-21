@@ -46,9 +46,70 @@ body {
 
 }
 
-.addBookButton:hover,
-.searchBookButton:hover {
-    background-color: #9fc088b7;
+#searchBook input {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Yeseva One", cursive;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    position: block;
+    width: -moz-fit-content;
+    width: fit-content;
+    z-index: 6;
+}
+
+.searchResContainer {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 25rem;
+    top: 7.5rem;
+    padding: 20px;
+    border-radius: 1rem;
+    align-items: center;
+    margin: 0 10px;
+    background: rgb(154, 201, 120);
+    background: -moz-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9ac978", endColorstr="#9ac978", GradientType=1);
+    -webkit-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    z-index: 5;
+}
+
+.searchResContainer .containerClass {
+    width: 100%;
+}
+
+.search:hover .searchBookButton {
+    background: rgb(154, 201, 120);
+    background: -moz-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9ac978", endColorstr="#9ac978", GradientType=1);
+    -webkit-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+
+    animation: textfadeIn 1s;
+}
+
+.addBookButton:hover {
+    background: rgb(154, 201, 120);
+    background: -moz-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    background: radial-gradient(circle, rgba(154, 201, 120, 1) 0%, rgba(154, 201, 120, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9ac978", endColorstr="#9ac978", GradientType=1);
+    -webkit-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px -2px 19px -5px rgba(0, 0, 0, 0.75);
+
     animation: textfadeIn 1s;
 }
 
@@ -131,7 +192,7 @@ main {
 
 #forBook {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.555);
+    background-color: transparent;
     width: 100%;
     height: 75%;
     bottom: 0;
@@ -164,6 +225,7 @@ main {
     flex-direction: column;
     align-items: center;
 }
+
 .shelfTitle {
     display: flex;
     margin: 0;
@@ -221,6 +283,7 @@ main {
     -moz-box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
     box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
 }
+
 .containerClass:hover {
     -webkit-box-shadow: -5px 5px 30px -5px rgba(0, 0, 0, 0.83);
     -moz-box-shadow: -5px 5px 30px -5px rgba(0, 0, 0, 0.83);
