@@ -20,6 +20,7 @@ function showShelfMed(shelf) {
             isExpand = false;
         }
     console.log(isExpand);
+    console.log(ishover);
 }
 function ishoverCheck() {
     ishover = true;

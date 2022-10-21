@@ -164,8 +164,14 @@ main {
     flex-direction: column;
     align-items: center;
 }
-#containerTitle {
-    background-color: #b7ff009c;
+.shelfTitle {
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    background-color: #7e7e4a;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
 }
 
 #read {
@@ -214,6 +220,12 @@ main {
     -webkit-box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
     -moz-box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
     box-shadow: -5px 5px 19px -5px rgba(0, 0, 0, 0.83);
+}
+.containerClass:hover {
+    -webkit-box-shadow: -5px 5px 30px -5px rgba(0, 0, 0, 0.83);
+    -moz-box-shadow: -5px 5px 30px -5px rgba(0, 0, 0, 0.83);
+    box-shadow: -5px 5px 30px -5px rgba(0, 0, 0, 0.83);
+    background-color: #bbdba5a9;
 }
 
 .containerBookClass p {

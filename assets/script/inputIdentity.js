@@ -17,7 +17,7 @@ function generateBookInfo(id, title, author, year, readState, targetTime) {
 }
 //bug Is Here. It can't defined objecy
 function createBook(bookElement) {
-    const { id, title, author, year, readState, targetTime } = bookElement
+    const { id, title, author, year, readState, targetTime } = bookElement;
     const thisId = id.toString();
 
     const bookTitle = document.createElement("p");
@@ -26,7 +26,6 @@ function createBook(bookElement) {
     const titleBook = document.createElement("p");
     titleBook.innerText = title;
     bookTitle.append(titleBook);
-    console.log(title);
 
     const bookAuthor = document.createElement("p");
     bookAuthor.classList.add("authorClass");
@@ -52,7 +51,7 @@ function createBook(bookElement) {
         targetBook.innerText = targetTime;
         target.append(targetBook);
         containerBook.append(bookTitle, bookAuthor, bookYear, target);
-    } else if(readState == 'onRead' && targetTime == '') {
+    } else if (readState == 'onRead' && targetTime == '') {
         const targetWarn = document.createElement("p");
         targetWarn.classList.add("targerWarn");
         targetWarn.innerHTML = '<span class="material-symbols-outlined">exclamation</span><span> Edit to Add Target Due</span>';
@@ -102,6 +101,10 @@ function createBook(bookElement) {
     editButton.classList.add("material-symbols-outlined");
     editButton.classList.add('edit');
     editButton.innerText = 'edit';
+    editButton.addEventListener('click', function () {
+        editBook(id);
+        console.log('editBook Instance');
+    })
 
     const containerButton = document.createElement("div");
     containerButton.classList.add("containerButtonClass");
@@ -164,7 +167,13 @@ document.addEventListener('DOMContentLoaded', function () {
     submitForm.addEventListener('submit', function (event) {
         event.preventDefault();
         console.log('adding book');
-        addBook();
+        if (isEditing == true) {
+            applyEdit();
+            isEditing = false;
+            editIndex = null;
+        } else if (isEditing == false){
+           addBook(); 
+        }
         submitForm.reset()
     });
 
@@ -177,7 +186,6 @@ document.addEventListener(RENDER_EVENT, function () {
     const bookDoneRead = document.getElementById('readContent');
     const bookRead = document.getElementById('readingContent');
     const bookUnRead = document.getElementById('unreadContent');
-
     // clearing list item
     bookDoneRead.innerHTML = '';
     bookRead.innerHTML = '';
@@ -196,6 +204,8 @@ document.addEventListener(RENDER_EVENT, function () {
         }
 
     }
-
     saveData();
+    setTimeout(() => { nothoverCheck(); }, 500);
+
+
 });
