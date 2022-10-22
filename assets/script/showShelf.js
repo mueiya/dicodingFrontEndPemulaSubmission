@@ -8,13 +8,11 @@ function showShelfMed(shelf) {
 
     if (ishover == false)
         if (theShelf.style.bottom != '0%') {
-            // theShelf.style.bottom = '0%';
             animateShelfShow(theShelf);
             changeIcon(theShelf);
             isExpand = true;
         } else {
             animateShelfHide(theShelf);
-            //theShelf.style.bottom = '-72%';
             changeIcon(theShelf);
             isExpand = false;
         }

@@ -176,7 +176,6 @@ main {
     height: 100%;
 }
 
-.illustContainer,
 .bookContainer {
     flex-basis: 33.3%;
 }
@@ -185,9 +184,19 @@ main {
     display: flex;
     padding: 0.1rem;
     justify-content: space-around;
-    /* remove bg color after finish */
-    background-color: red;
-    margin: 1%;
+}
+
+#forIllust {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    inset: 0 0 0 0;
+    align-items: center;
+}
+
+#forIllust img {
+    width: 90%;
 }
 
 #forBook {

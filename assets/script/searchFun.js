@@ -27,8 +27,6 @@ function updateSearch() {
     }
 }
 
-//bug: Need exact capital state of alphabet
-
 function bookSearch(val) {
     const value = val;
     bookInfoArray.forEach(element => {

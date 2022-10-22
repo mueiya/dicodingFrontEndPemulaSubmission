@@ -15,7 +15,6 @@ function generateBookInfo(id, title, author, year, readState, targetTime) {
         targetTime
     };
 }
-//bug Is Here. It can't defined objecy
 function createBook(bookElement) {
     const { id, title, author, year, readState, targetTime } = bookElement;
     const thisId = id.toString();
